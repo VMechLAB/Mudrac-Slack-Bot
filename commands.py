@@ -28,7 +28,16 @@ def handle_mudrac(ack: Ack, command: dict, say: Say):
     start_time = time.time()
     ack()
     text = command.get("text", "").strip().lower()
-    channel = command.get("channel_id") or command.get("user_id")
+    channel = command.get("channel_id")
+    
+    # If channel is None, try using user_id as fallback
+    if not channel:
+        channel = command.get("user_id")
+    
+    # If still None, use the response_url (Slack will handle it)
+    if not channel:
+        say(text="I couldn't determine where to send this message. Please try again in a channel.", response_type="ephemeral")
+        return
 
     if text in ["help", "commands", "?"]:
         response = get_help_text()
@@ -59,7 +68,12 @@ def handle_mudrac(ack: Ack, command: dict, say: Say):
 def handle_coffee(ack: Ack, command: dict, say: Say):
     start_time = time.time()
     ack()
-    channel = command.get("channel_id") or command.get("user_id")
+    channel = command.get("channel_id")
+    if not channel:
+        channel = command.get("user_id")
+    if not channel:
+        say(text="I couldn't determine where to send this message.", response_type="ephemeral")
+        return
     response = random.choice(RESPONSES["coffee"])
     elapsed = (time.time() - start_time) * 1000
     say(text=f"{response}\n\n_(responded in {elapsed:.0f}ms)_", channel=channel)
@@ -67,7 +81,12 @@ def handle_coffee(ack: Ack, command: dict, say: Say):
 def handle_motivate_me(ack: Ack, command: dict, say: Say):
     start_time = time.time()
     ack()
-    channel = command.get("channel_id") or command.get("user_id")
+    channel = command.get("channel_id")
+    if not channel:
+        channel = command.get("user_id")
+    if not channel:
+        say(text="I couldn't determine where to send this message.", response_type="ephemeral")
+        return
     response = random.choice(RESPONSES["motivate"])
     elapsed = (time.time() - start_time) * 1000
     say(text=f"{response}\n\n_(responded in {elapsed:.0f}ms)_", channel=channel)
@@ -75,7 +94,12 @@ def handle_motivate_me(ack: Ack, command: dict, say: Say):
 def handle_fun_fun(ack: Ack, command: dict, say: Say):
     start_time = time.time()
     ack()
-    channel = command.get("channel_id") or command.get("user_id")
+    channel = command.get("channel_id")
+    if not channel:
+        channel = command.get("user_id")
+    if not channel:
+        say(text="I couldn't determine where to send this message.", response_type="ephemeral")
+        return
     response = random.choice(RESPONSES["fun"])
     elapsed = (time.time() - start_time) * 1000
     say(text=f"{response}\n\n_(responded in {elapsed:.0f}ms)_", channel=channel)
@@ -84,7 +108,12 @@ def handle_find_part(ack: Ack, command: dict, say: Say):
     start_time = time.time()
     ack()
     category = command.get("text", "").strip().lower()
-    channel = command.get("channel_id") or command.get("user_id")
+    channel = command.get("channel_id")
+    if not channel:
+        channel = command.get("user_id")
+    if not channel:
+        say(text="I couldn't determine where to send this message.", response_type="ephemeral")
+        return
 
     if not category:
         elapsed = (time.time() - start_time) * 1000
