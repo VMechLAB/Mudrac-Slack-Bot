@@ -1,0 +1,83 @@
+{
+  "mudrac_general": [
+    "Mudrac says: 'Did you try turning it off and on again? No? Try it, I'll wait.'",
+    "I'm Mudrac, the engineer's best friend. Ask me anything (but I'll probably make a pun).",
+    "If it ain't broke, you haven't pushed it hard enough. What's your question?",
+    "I have 256 bytes of RAM and a dream. Let's solve your problem.",
+    "You had me at 'voltage divider'. What's up?",
+    "Error 404: Brain not found. Just kidding, I'm here. What's the issue?",
+    "I'm like a multimeter – I give you values, but you have to interpret them.",
+    "If your problem involves smoke, please step away and call me from a safe distance.",
+    "I've seen more datasheets than you've had hot dinners. Fire away.",
+    "Remember: There's no such thing as a stupid question. Only stupid pinouts."
+  ],
+  "mudrac_advice": {
+    "servo": "Ah, the servo has discovered interpretive dance. Check your power supply, common ground, and whether you're trying to power it directly from the MCU. (GPIO pins are for signals, not power!) Also, check your PWM frequency – most servos want 50Hz.",
+    "servos": "Ah, the servo has discovered interpretive dance. Check your power supply, common ground, and whether you're trying to power it directly from the MCU. (GPIO pins are for signals, not power!) Also, check your PWM frequency – most servos want 50Hz.",
+    "motor": "Motors are hungry beasts. Make sure you're using a separate power supply and a motor driver (L298N, TB6612). Your microcontroller is not a power plant. Also, add flyback diodes or you'll fry your driver!",
+    "motors": "Motors are hungry beasts. Make sure you're using a separate power supply and a motor driver (L298N, TB6612). Your microcontroller is not a power plant. Also, add flyback diodes or you'll fry your driver!",
+    "dc motor": "Motors are hungry beasts. Make sure you're using a separate power supply and a motor driver (L298N, TB6612). Your microcontroller is not a power plant. Also, add flyback diodes or you'll fry your driver!",
+    "stepper": "Steppers need precise timing. Don't just spin them in a loop without acceleration control – they'll stall and sing you the song of their people. Use a driver like A4988 or TMC2209.",
+    "wifi": "WiFi not connecting? Did you sacrifice the required number of ESP8266s to the RF gods? Check your antenna connection, make sure the SSID/password is correct, and try a 2.4GHz network (not 5GHz).",
+    "voltage": "Voltage too low? Your power supply might be on a coffee break. Check your regulator (LM2596, AMS1117) and those bulky capacitors. Also, measure the voltage under load – it drops!",
+    "regulator": "Voltage too low? Your power supply might be on a coffee break. Check your regulator (LM2596, AMS1117) and those bulky capacitors. Also, measure the voltage under load – it drops!",
+    "led": "Did you remember the current-limiting resistor? If not, that LED is now a very tiny flashbulb. RIP. Use Ohm's law: (V_supply - V_forward) / desired_current = resistor value.",
+    "neopixel": "NeoPixels (WS2812) are fussy about timing. Use a dedicated library (Adafruit_NeoPixel or FastLED). Make sure your power supply can handle the current – each pixel draws up to 60mA!",
+    "ws2812": "NeoPixels (WS2812) are fussy about timing. Use a dedicated library (Adafruit_NeoPixel or FastLED). Make sure your power supply can handle the current – each pixel draws up to 60mA!",
+    "sensor": "Sensors are sensitive souls. Check your I2C pull-up resistors (4.7kΩ is a good start). If it's analog, make sure your reference voltage is stable. Also, double-check the datasheet pinout.",
+    "i2c": "I2C issues? 90% of the time it's a bad connection, wrong address, or missing pull-up resistors. Run an I2C scanner sketch to see if the device is even responding.",
+    "spi": "SPI is fast and furious. Check your MISO, MOSI, SCK, and CS pins. Make sure you're not sharing the bus with devices that have conflicting chip selects.",
+    "arduino": "Arduino IDE giving you grief? Check your board selection, COM port, and baud rate. And for the love of all that is holy, make sure you have a ground connection between devices!",
+    "code": "'Code doesn't compile' – my favorite error. Check your semicolons, braces, and function names. If you're using ChatGPT, check your logic. If you're copying from StackOverflow, read the comments.",
+    "compile": "'Code doesn't compile' – my favorite error. Check your semicolons, braces, and function names. If you're using ChatGPT, check your logic. If you're copying from StackOverflow, read the comments.",
+    "bluetooth": "Bluetooth pairing fails? Check your baud rate, make sure the device is in pairing mode, and don't stand too far away. Also, some modules (HC-05) need a specific AT command to change modes.",
+    "ground": "Ground loop? Floating input? Are your grounds actually connected? A missing ground is the #1 cause of 'it works on the bench but not in the field' problems.",
+    "battery": "Battery draining fast? You might have a short, or your regulator is inefficient. Also, don't run high-current devices (motors, servos) directly from a coin cell – they'll cry.",
+    "capacitor": "Capacitor acting weird? Check polarity (if electrolytic). If it's ceramic, it might be microphonic or lose capacitance under DC bias. Use a bigger value for power supply decoupling.",
+    "resistor": "Resistor color codes confusing you? Just use a multimeter. Or Google. We live in the future, use the tools!",
+    "oscilloscope": "Oscilloscope triggering driving you nuts? Set it to 'Auto' trigger mode, adjust the voltage/div, and make sure your probe is set to 10x. Also, don't forget to calibrate it with the 1kHz test signal.",
+    "soldering": "Soldering iron not melting? Tin your tip, clean it with a brass sponge, and set the temperature to ~350°C. If it's still not working, you might have oxidized the tip – replace it.",
+    "esp32": "ESP32 crashing? Check your power supply (it spikes current on WiFi transmit). Use a 100µF capacitor near the VIN pin. Also, check your GPIO pull-ups – some pins have strapping functions!"
+  },
+  "mudrac_unknown": [
+    "That's a great question! Unfortunately, I have a tiny silicon brain. Could you rephrase? Try saying 'servo', 'motor', 'wifi', 'sensor', 'i2c', or 'battery'.",
+    "I need more data. Describe the problem like I'm 5 years old (or like I'm a microcontroller – same thing).",
+    "ERROR: Human language buffer overflow. Give me a keyword like 'servo' or 'wifi' so I can help.",
+    "I'm getting a '404 – Relevant Brain Cell Not Found' error. Can you narrow it down to one specific component or issue?",
+    "Is that a technical question or a philosophical one? If it's philosophical, the answer is 42. If it's technical, give me a keyword."
+  ],
+  "coffee": [
+    "Coffee: because debugging without it is just debugging.",
+    "My ideal coffee: black as a resistor band, bitter as a failed compile.",
+    "Coffee is the only thing keeping my flux capacitor charged.",
+    "The three states of an engineer: coding, debugging, and coffee. I am currently in all three.",
+    "Coffee first. Schematics second. Code third. Coffee again.",
+    "I don't have a caffeine problem. I have a problem if I don't have caffeine.",
+    "The smell of coffee in the morning means the magic smoke is staying inside the components today.",
+    "Coffee is my digital logic analyzer – it helps me see the state of things."
+  ],
+  "motivate": [
+    "Remember: every great engineer started with a blinking LED. You're doing great!",
+    "If it works, don't touch it. If it doesn't work, you're learning.",
+    "The magic smoke only escapes once. Keep calm and solder on.",
+    "You're one bug fix away from victory. Go crush it.",
+    "That bug isn't personal. It's just... energetic.",
+    "Even the Apollo 11 software had bugs. You're in good company.",
+    "Every failed prototype is just a successful discovery of what not to do. That's engineering.",
+    "You're not a bad engineer. You're just testing the fail-case scenarios. That's called QA.",
+    "When the soldering iron is hot, the heart is warm. Build something today!"
+  ],
+  "fun": [
+    "Why did the resistor go to therapy? Too much current through it.",
+    "What's an engineer's favourite instrument? A digital multimeter.",
+    "Why do engineers confuse Halloween and Christmas? Because OCT 31 = DEC 25.",
+    "I told my code a joke. It didn't laugh. It had no sense of humor... and no semicolons.",
+    "You connected a servo to a GPIO pin? Bold strategy. The ESP32 appreciates your sacrifice.",
+    "Why did the Arduino break up with the Raspberry Pi? It couldn't handle the Linux relationship.",
+    "What's the difference between a mechanical engineer and a civil engineer? The mechanical engineer builds weapons. The civil engineer builds targets.",
+    "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "My favorite programming language is solder. It's permanent, and it hurts when you make a mistake.",
+    "The resistor is the bravest component. It always opposes current, never gives in.",
+    "I don't always test my code, but when I do, I do it in production. (Just kidding. Don't do that.)"
+  ]
+}
