@@ -3,7 +3,7 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from dotenv import load_dotenv
 
-# Import our command handlers
+# Import command handlers
 from commands import (
     handle_mudrac,
     handle_coffee,
@@ -12,16 +12,13 @@ from commands import (
     handle_find_part
 )
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Initialize the Slack app
 app = App(
     token=os.environ.get("SLACK_BOT_TOKEN"),
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
 )
 
-# Register all slash commands with their new names
 app.command("/mudrac")(handle_mudrac)
 app.command("/coffee")(handle_coffee)
 app.command("/motivate-me")(handle_motivate_me)
