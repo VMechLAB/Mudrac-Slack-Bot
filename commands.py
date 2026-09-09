@@ -11,7 +11,7 @@ with open(os.path.join(BASE_DIR, "components.json")) as f:
 with open(os.path.join(BASE_DIR, "responses.json")) as f:
     RESPONSES = json.load(f)
 
-# ---------- Smart Help Message ----------
+# Smart Help Message 
 def get_help_text():
     return (
         "*Mudrac Help Desk*\n"
@@ -24,58 +24,54 @@ def get_help_text():
         "\n_Try typing `/mudrac my servo is shaking` to see me in action!_"
     )
 
-# ---------- /mudrac ----------
+# /mudrac
 def handle_mudrac(ack: Ack, command: dict, say: Say):
     ack()
     text = command.get("text", "").strip().lower()
     channel = command.get("channel_id")
 
-    # Case 0: Explicit help request
     if text in ["help", "commands", "?"]:
         say(text=get_help_text(), channel=channel)
         return
 
-    # Case 1: No question -> funny general greeting
     if not text:
         say(text=random.choice(RESPONSES["mudrac_general"]), channel=channel)
         return
 
-    # Case 2: Search for known keywords (prioritize longest matches first)
     advice_keys = sorted(RESPONSES["mudrac_advice"].keys(), key=len, reverse=True)
     for keyword in advice_keys:
         if keyword in text:
             say(text=RESPONSES["mudrac_advice"][keyword], channel=channel)
             return
 
-    # Case 3: No keywords found -> funny "need more info" response
     fallback = random.choice(RESPONSES["mudrac_unknown"])
     if len(text.split()) > 3:
         fallback += " Try using a single keyword like 'wifi' or 'servo'."
     say(text=fallback, channel=channel)
 
 
-# ---------- /coffee ----------
+# /coffee
 def handle_coffee(ack: Ack, command: dict, say: Say):
     ack()
     channel = command.get("channel_id")
     say(text=random.choice(RESPONSES["coffee"]), channel=channel)
 
 
-# ---------- /motivate-me ----------
+# /motivate-me
 def handle_motivate_me(ack: Ack, command: dict, say: Say):
     ack()
     channel = command.get("channel_id")
     say(text=random.choice(RESPONSES["motivate"]), channel=channel)
 
 
-# ---------- /fun-fun ----------
+# /fun-fun
 def handle_fun_fun(ack: Ack, command: dict, say: Say):
     ack()
     channel = command.get("channel_id")
     say(text=random.choice(RESPONSES["fun"]), channel=channel)
 
 
-# ---------- /find-part ----------
+# /find-part
 def handle_find_part(ack: Ack, command: dict, say: Say):
     ack()
     category = command.get("text", "").strip().lower()
@@ -85,7 +81,6 @@ def handle_find_part(ack: Ack, command: dict, say: Say):
         say(text="You need to give me a category, e.g. `/find-part wifi` or `/find-part sensor`", channel=channel)
         return
 
-    # Search for matches (case-insensitive)
     matches = [item for item in COMPONENTS if category in item["category"].lower()]
 
     if not matches:
@@ -94,6 +89,5 @@ def handle_find_part(ack: Ack, command: dict, say: Say):
         say(text=f"Hmm, I don't know any components in the *{category}* category. Try one of these: {cat_list}", channel=channel)
         return
 
-    # Format a nice, readable list
     names = ", ".join([item["name"] for item in matches])
     say(text=f"*{category.upper()}* components I know: {names}", channel=channel)
