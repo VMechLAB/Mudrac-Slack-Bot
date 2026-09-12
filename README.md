@@ -1,6 +1,7 @@
 # Mudrac
 
-A Slack bot for engineers, makers, and hardware hobbyists. Built for Hack Club Stardance.
+He is THE dad like engeneer with stupid joks, some advice and ✨a tiniy silicon brain✨. 
+Will waste you more time than save you but hey he doesnt have to be all that useful
 
 ## Commands
 
@@ -54,10 +55,15 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token
 SLACK_APP_TOKEN=xapp-your-app-token
 SLACK_SIGNING_SECRET=your-signing-secret
 
-Dont commit it, those are your dirty secrets
+Those are your dirty secrets
 
 ## 4. Run
 python app.py
 components.json contains 50 components across 20+ categories.
 Examples: wifi, imu, sensor, motor, led, display, gps, bluetooth, lora.
 
+## 5. Go trough the process 
+Or just use him in a public channel he is awake 24/7.
+
+## Licence
+MIT - free to use it to your liking.
