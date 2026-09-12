@@ -63,7 +63,9 @@ components.json contains 50 components across 20+ categories.
 Examples: wifi, imu, sensor, motor, led, display, gps, bluetooth, lora.
 
 ## 5. Go trough the process 
-Or just use him in a public channel he is awake 24/7.
+Or just use him in a public channel he is awake 24/7. Here is the link to the channel where you can join:
+https://hackclub.enterprise.slack.com/archives/C0C1D0S5J6N
+It is called: mudrac-the-bot you can just search for it.
 
 ## Licence
 MIT - free to use it to your liking.
